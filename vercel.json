@@ -2,40 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "app/main.py",  // Adjust the path based on your entry point
-      "use": "@vercel/python" // Specify the Vercel Python runtime
+      "src": "app/main.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)", // Redirect all requests to the FastAPI app
-      "dest": "app/main.py" // Adjust this to point to your FastAPI entry point
-    }
-  ],
-  "functions": {
-    "api/*.py": { // Adjust this glob pattern to match your API functions
-      "maxDuration": 10, // Maximum duration in seconds
-      "memory": 1024 // Memory allocated for serverless functions
-    }
-  },
-  "cleanUrls": true, // Enable clean URLs
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "app/main.py"
     }
   ]
 }
