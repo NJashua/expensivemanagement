@@ -1,25 +1,65 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "uvicorn app.main:app --reload",
+  "cleanUrls": true,
+  "crons": [
     {
-      "src": "app/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "path": "/api/every-minute",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/every-hour",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/every-day",
+      "schedule": "0 0 * * *"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app/main.py"
+  "devCommand": "uvicorn app.main:app --host 0.0.0.0 --port 3000",
+  "functions": {
+    "api/*.py": {
+      "memory": 3008,
+      "maxDuration": 30
+    },
+    "api/every-minute": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/every-hour": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/every-day": {
+      "memory": 1024,
+      "maxDuration": 60
     }
-  ],
-  "env": {
-    "DB_USERNAME": "jashua",
-    "DB_PASSWORD": "Nithin@2024",
-    "DB_HOST": "localhost",
-    "DB_PORT": "3306",
-    "DB_NAME": "personal_info_keeper"
-  }
+  },
+  "headers": [
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
 }
