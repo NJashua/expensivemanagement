@@ -1,0 +1,17 @@
+{
+    "build": {
+      "env": {
+        "PYTHON_VERSION": "3.11"
+      },
+      "docker": {
+        "file": "Dockerfile"
+      }
+    },
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/app"
+      }
+    ]
+  }
+  
