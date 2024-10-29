@@ -1,8 +1,11 @@
 {
   "version": 2,
   "build": {
-    "docker": {
-      "file": "Dockerfile"
+    "env": {
+      "PYTHON_VERSION": "3.11"
+    },
+    "commands": {
+      "build": "pip install -r requirements.txt"
     }
   },
   "routes": [
