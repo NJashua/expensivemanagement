@@ -1,0 +1,205 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: monospace; /* Default font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f3f4f7;
+}
+
+.welcome-container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    animation: slide-up 1s ease-out forwards;
+}
+
+.logo-container {
+    margin-bottom: 20px; /* Space between logo and text */
+}
+
+.logo {
+    width: 200px; /* Adjust logo size */
+    height: auto;
+    animation: logo-appear 1s forwards; /* Animation for logo */
+}
+
+/* Text styles */
+.welcome-text h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: sans-serif; /* Different font for the heading */
+}
+
+.welcome-text p {
+    font-size: 1.2rem;
+    color: #777;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 20px;
+}
+
+.buttons-container {
+    margin-top: 30px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s; /* Fade transition */
+}
+
+.button {
+    display: inline-block;
+    background-color: #00eaff;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: monospace;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #00f7ff;
+}
+
+/* Animation styles */
+@keyframes slide-up {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes logo-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Media Queries for better dynamic responsiveness */
+@media (max-width: 1200px) {
+    .logo {
+        width: 180px; /* Adjust logo size for large tablets and smaller laptops */
+    }
+    
+    .welcome-text h1 {
+        font-size: 2.2rem; /* Reduce font size */
+    }
+}
+
+@media (max-width: 1024px) {
+    .welcome-container {
+        padding: 40px; /* Adjust padding for tablets */
+    }
+
+    .welcome-text h1 {
+        font-size: 2rem; /* Adjust heading font size */
+    }
+
+    .welcome-text p {
+        font-size: 1.1rem; /* Adjust paragraph font size */
+    }
+
+    .button {
+        padding: 12px 25px; /* Adjust button padding */
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-container {
+        padding: 30px; /* Reduce padding for smaller screens */
+    }
+    
+    .welcome-text h1 {
+        font-size: 1.8rem; /* Adjust font size */
+    }
+
+    .welcome-text p {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    .button {
+        padding: 10px 20px; /* Adjust button padding */
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        width: 150px; /* Adjust logo size */
+    }
+
+    .welcome-text h1 {
+        font-size: 1.6rem; /* Further adjust font size */
+    }
+
+    .welcome-text p {
+        font-size: 0.9rem; /* Further adjust font size */
+    }
+
+    .button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-container {
+        padding: 20px; /* Further reduce padding */
+    }
+
+    .welcome-text h1 {
+        font-size: 1.4rem; /* Further adjust font size for small screens */
+    }
+
+    .welcome-text p {
+        font-size: 0.85rem; /* Further adjust font size */
+    }
+
+    .button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .welcome-container {
+        padding: 15px; /* Minimal padding for very small screens */
+    }
+
+    .welcome-text h1 {
+        font-size: 1.2rem; /* Reduce font size for very small screens */
+    }
+
+    .welcome-text p {
+        font-size: 0.8rem;
+    }
+
+    .button {
+        padding: 6px 10px; /* Smaller button size */
+        font-size: 0.75rem;
+    }
+}

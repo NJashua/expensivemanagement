@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Expense Manager</title>
+    <link rel="stylesheet" href="/static/css/splash.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet"> <!-- Include Google Fonts -->
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo-container">
+            <img src="/static/images/logoimage.avif" alt="Logo" class="logo fade-in">
+        </div>
+        <div class="welcome-text">
+            <h1>Welcome to Expense Manager</h1>
+            <p>Track your expenses and manage your finances efficiently.</p>
+        </div>
+        <div class="buttons-container">
+            <a href="/register" class="button">Register</a>
+            <a href="/login" class="button">Login</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const welcomeText = document.querySelector('.welcome-text');
+            const buttons = document.querySelector('.buttons-container');
+            setTimeout(() => {
+                welcomeText.classList.add('fade-in');
+                buttons.classList.add('fade-in');
+            }, 3000); // Show text and buttons after 3 seconds
+        });
+    </script>
+</body>
+</html>
