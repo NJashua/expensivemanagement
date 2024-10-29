@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 fastapi
 uvicorn
 sqlalchemy
 pymysql
 python-dotenv
-=======
-sqlalchemy==2.0.17
-pymysql==1.0.3
-uvicorn==0.22.0
-pydantic==1.10.11
-fastapi==0.103.0
->>>>>>> origin/main
