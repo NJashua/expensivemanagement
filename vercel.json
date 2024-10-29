@@ -1,49 +1,25 @@
 {
-  "buildCommand": "uvicorn app.main:app --reload",
-  "cleanUrls": true,
-  "crons": [
+  "version": 2,
+  "builds": [
     {
-      "path": "/api/every-minute",
-      "schedule": "* * * * *"
-    },
-    {
-      "path": "/api/every-hour",
-      "schedule": "0 * * * *"
-    },
-    {
-      "path": "/api/every-day",
-      "schedule": "0 0 * * *"
+      "src": "app/main.py",  // Adjust the path based on your entry point
+      "use": "@vercel/python" // Specify the Vercel Python runtime
     }
   ],
-  "devCommand": "uvicorn app.main:app --host 0.0.0.0 --port 3000",
+  "routes": [
+    {
+      "src": "/(.*)", // Redirect all requests to the FastAPI app
+      "dest": "app/main.py" // Adjust this to point to your FastAPI entry point
+    }
+  ],
   "functions": {
-    "api/*.py": {
-      "memory": 3008,
-      "maxDuration": 30
-    },
-    "api/every-minute": {
-      "memory": 1024,
-      "maxDuration": 60
-    },
-    "api/every-hour": {
-      "memory": 1024,
-      "maxDuration": 60
-    },
-    "api/every-day": {
-      "memory": 1024,
-      "maxDuration": 60
+    "api/*.py": { // Adjust this glob pattern to match your API functions
+      "maxDuration": 10, // Maximum duration in seconds
+      "memory": 1024 // Memory allocated for serverless functions
     }
   },
+  "cleanUrls": true, // Enable clean URLs
   "headers": [
-    {
-      "source": "/service-worker.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
     {
       "source": "/(.*)",
       "headers": [
